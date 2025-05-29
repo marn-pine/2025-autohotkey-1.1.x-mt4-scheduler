@@ -10,6 +10,12 @@ scrp_full_name  = %A_ScriptName%
 scrp_name := substr(scrp_full_name,1,StrLen(scrp_full_name)-4)
 ini_name  = %scrp_name%.ini
 
+DriveGet, status, Status, D:\
+if (status != "Ready")
+{
+	MsgBox, Drive D: is not ready!
+	ExitApp
+}
 
 ; mode = "/portable" or ""
 IniRead, mode, %ini_name%, Open Mode, Mode
